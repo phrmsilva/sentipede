@@ -18,8 +18,14 @@ def INTERNALwritebackread(startdate,enddate,symbol):
     return frameback
 
 
+def INTERNALfixdate(date):
+    n= date[5:7] + '-' + date[8:10] + '-' + date[0:4]
+    print n
+    return n
+
 ###USE THIS
 
 def simplePullByDate(date,symbol):
-    retframe = INTERNALwritebackread(date,date,symbol)
+    ndate = INTERNALfixdate(date)
+    retframe = INTERNALwritebackread(ndate,ndate,symbol)
     return retframe['Adj Close']
