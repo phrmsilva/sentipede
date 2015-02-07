@@ -29,3 +29,9 @@ def simplePullByDate(date,symbol):
     ndate = INTERNALfixdate(date)
     retframe = INTERNALwritebackread(ndate,ndate,symbol)
     return retframe['Adj Close']
+
+
+###well now use THIS
+def gen_interface(colname,sym,date):  #the column, symbol(allcaps), and date(yyyy-mm-dd)
+    curframe = pd.read_csv(sym+'.csv')
+    return curframe[colname].loc[curframe['Date']==date]
