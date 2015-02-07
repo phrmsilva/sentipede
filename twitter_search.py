@@ -1,11 +1,13 @@
 import json
 from requests_oauthlib import OAuth1
-from tokens import *
+from twitter_tokens import *
 import requests
 import sys
 import unicodedata
 """ How to use:
-    Provide file tokens.py with consumer and access key and secret defined.
+    Provide file access_tokens.py with:
+      consumer_key, consumer_secret,
+      access_key, and access_secret defined.
     
     Request_tweets:
     Inputs:
@@ -20,11 +22,11 @@ import unicodedata
 
 
 
-def request_tweets(query, count, date):
-  search_url = 'https://api.twitter.com/1.1/search/tweets.json'
-  
+def request_tweets(query, count, date): 
+
   auth = OAuth1(consumer_key, consumer_secret,
                   access_key, access_secret)
+  search_url = 'https://api.twitter.com/1.1/search/tweets.json'
 
   req_tweets = requests.get(search_url, auth=auth, 
     params={'q': query, 'lang': 'en', 'count': count, 'until' : date})
