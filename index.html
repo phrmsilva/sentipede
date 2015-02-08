@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>sentipede</title>
+        <script type="text/javascript" src="./d3/d3.js"></script>
+        <style type="text/css">
+        
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;
+                margin-right: 2px;
+                background-color: teal;
+            }
+        </style>
+    </head>
+    <body>
+        <svg width='1000' height='400'> 
+        </svg>
+        <script type="text/javascript">
+            var cocodes = ['GOOG', 'NVS', 'BRK.A', 'AAPL', 'GE', 'NSRGY',
+                'FB', 'HUBS', 'TRIP'];
+            var data; // a global
+            var alldata;
+            var prices = [[], [], [], [], [], [], [], [], []];
+            var csv;
+            var dataset = [5, 10, 15, 20, 25];
+
+            d3.json("http://localhost:8000/sentdata.json", function(json) {
+                data = json;
+            });
+            for(var i = 0; i < 10; i++) {
+                alldata.push(data[cocodes[i]]);
+            }
+
+            for(var i = 0; i < 10; i++) { // i is the company
+                d3.csv("http://localhost:8000/".concat(cocodes[i]),
+                    function(acsv) {
+                        csv = acsv;
+                })
+                for (var j = 0; j < 5; j++) { //j is the company
+                    prices[i].push((csv[j]['Open'] - csv[j]['Close']) * 100/csv[j]['Open']);
+                }
+            }
+
+            var circle = svg.selectAll("circle")
+                .data(alldata['GOOG'])
+                .attr("cx", function(date) { return parseInt(date.substring(8, 10)) * 100 + 150; })
+                .attr("cy", function(date) { return date['pos'] * height});
+
+            var circleEnter = circle.enter().append("circle");
+
+        </script>
+    </body>
+</html>
