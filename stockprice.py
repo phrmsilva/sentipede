@@ -6,7 +6,10 @@ def INTERNAL_makeURLfromParams(start_date,end_date,ticker_symbol):
     INTERNAL_base = 'http://ichart.finance.yahoo.com/table.csv'
     INTERNAL_startstr = start_date.split('-')
     INTERNAL_endstr = end_date.split('-')
-    payload = {'s' : ticker_symbol,'a' :INTERNAL_startstr[0] ,'b':INTERNAL_startstr[1],'c':INTERNAL_startstr[2],'d':INTERNAL_endstr[0],'e':INTERNAL_endstr[1],'f':INTERNAL_endstr[2],'g':'d','ignore':'.csv'}
+    payload = {'s' : ticker_symbol,'a' :INTERNAL_startstr[0],
+        'b':INTERNAL_startstr[1],'c':INTERNAL_startstr[2],
+        'd':INTERNAL_endstr[0],'e':INTERNAL_endstr[1],
+        'f':INTERNAL_endstr[2],'g':'d','ignore':'.csv'}
     return requests.get(INTERNAL_base,params=payload)
 
 def INTERNALwritebackread(startdate,enddate,symbol):
