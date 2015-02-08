@@ -1,4 +1,4 @@
-consumer_key = 'U8hrpP7r1ATxJYKR9UwQ4Y6Ko'
-consumer_secret = 'SYj473iSsTMzJoLBHMB9ERNSiHhBCg2kZcCTWrHy7aHnitrpuU'
-access_key = '36885362-IbHdnguIvdHKg5Pj4HY0RcHBdcQmz6dtMSFYoYM7K'
-access_secret = '7Mv0Azf2XsAOtRam6RNGwFisrUaW1X69B3icU774T8BOq'
+consumer_key = 'CONSUMER_KEY'
+consumer_secret = 'CONSUMER_SECRET'
+access_key = 'ACCESS_KEY'
+access_secret = 'ACCESS_SECRET'
